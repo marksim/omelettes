@@ -1,0 +1,7 @@
+=Omelettes
+
+  gem install omelettes
+
+= About
+
+  omelettets is obfuscated 'obfuscate'.   Omelettes takes strings in your database and replaces them with worlds of the same length and same initial letter.

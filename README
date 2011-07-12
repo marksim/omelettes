@@ -1,7 +1,7 @@
 =Omelettes
 
   gem install omelettes
-  rails g omelettes:install
+  rails g omelettes:config
   rake db:cook
 
 = About

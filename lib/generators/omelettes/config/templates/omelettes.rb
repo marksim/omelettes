@@ -8,6 +8,6 @@
 #   config.models['admin_users'] = Admin::User
 
 Omelettes.setup do |config|
-  config.ignore_columns = [/(a-z_)*type/i]
+  config.ignore_columns = [/(a-z_)*type/i, /(a-z_)*password(a-z_)*/i]
   config.ignore_tables  = ['schema_migrations']
 end

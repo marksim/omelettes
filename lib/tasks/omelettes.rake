@@ -4,7 +4,7 @@ namespace :db do
     print "Are you sure you want to scramble all strings in the database? (y/n): "
     input = $stdin.gets.strip
     if input == "y"
-      Omelettes::Obfuscate.cook if ENV['OBFUSCATE']
+      Omelettes::Obfuscate.cook
     end
   end
 end

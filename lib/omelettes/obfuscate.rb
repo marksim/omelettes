@@ -10,13 +10,16 @@ module Omelettes
         Words.load(word_list || "/usr/share/dict/words")
         tables.each do |table|
           next if ignore_table?(table)
+          print "\n#{model(table).name}"
           model(table).find_each do |object|
             model(table).columns.each do |column|
               next if ignore_column?(column.name) || column.type != :string
               object.update_attribute(column.name, obfuscate(object.send(column.name)))
             end
+            print "."
           end
         end
+        print "\n"
       end
 
       def tables
@@ -44,6 +47,7 @@ module Omelettes
       end
 
       def obfuscate(string)
+        return nil if string.nil?
         result = []
         string.split(/(\s+)|([[:punct:]])/).each do |word|
           result << (word.match(/[a-zA-Z]+/).nil? ? word : Words.get(word))
@@ -53,7 +57,7 @@ module Omelettes
 
       attr_accessor :ignore_tables
       attr_accessor :ignore_columns
-
+      attr_accessor :word_list
       attr_accessor :models
     end
   end
@@ -74,7 +78,8 @@ module Omelettes
       def get(word)
         key = "#{word[0].downcase}#{word.length}"
         valid_words = (@word_hash[key] || [])
-        valid_words[rand(valid_words.size)].send(word[0].upcase == word[0] ? :capitalize : :downcase)
+        new_word = valid_words[rand(valid_words.size)]
+        new_word.send(word[0].upcase == word[0] ? :capitalize : :downcase) unless new_word.nil?
       end
 
       def load(path="/usr/share/dict/words")

@@ -1,5 +1,6 @@
 module Omelettes
   def self.setup
+    Omelettes::Obfuscate.models = {}
     yield Omelettes::Obfuscate
   end
 
@@ -23,7 +24,9 @@ module Omelettes
       end
 
       def model(table)
-        table.camelcase.singularize.constantize
+        models ||= {}
+        models[table] ||= table.camelcase.singularize.constantize
+        models[table]
       end
 
       def ignore_table?(table)
@@ -50,7 +53,8 @@ module Omelettes
 
       attr_accessor :ignore_tables
       attr_accessor :ignore_columns
-      attr_accessor :word_list
+
+      attr_accessor :models
     end
   end
 

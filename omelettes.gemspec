@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.require_path = "lib"
 
   s.add_development_dependency 'rspec', '~> 2.1.0'
+  s.add_dependency 'faker', "~> 0.9.5"
   s.add_dependency 'activerecord', '~> 3.0'
 
   s.rubyforge_project = s.name

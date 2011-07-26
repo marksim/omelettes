@@ -1,3 +1,9 @@
+begin
+  require 'active_record'
+rescue LoadError
+  require 'activerecord' unless defined?(ActiveRecord)
+end
+
 require 'omelettes/model_additions'
 require 'omelettes/obfuscate'
 require 'omelettes/words'

@@ -81,6 +81,7 @@ module Omelettes
     def as(style)
       @style = style unless @style == :hardened
     end
+    alias :like :as
   end
 end
 

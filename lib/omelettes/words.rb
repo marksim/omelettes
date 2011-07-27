@@ -22,7 +22,7 @@ module Omelettes
 
       def load(path="/usr/share/dict/words")
         clear
-        File.readlines(path).each do |word|
+        (path.is_a?(Array) ? path : File.readlines(path)).each do |word|
           add(word.strip)
         end
       end

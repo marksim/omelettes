@@ -12,6 +12,7 @@ module Omelettes
   require 'omelettes/railtie' if defined?(Rails)
 
   def self.setup
+    Omelettes::Obfuscate.models = {}
     yield Omelettes::Obfuscate
   end
 end

@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Omelettes::Words do
   describe "load" do
     it "loads from the default path" do
+      Omelettes::Words.clear
       Omelettes::Words.word_hash.should == {}
       Omelettes::Words.load
       Omelettes::Words.word_hash.should_not == {}
@@ -18,6 +19,9 @@ describe Omelettes::Words do
   end
 
   describe "add" do
+    before(:each) do
+      Omelettes::Words.clear
+    end
     it "adds a word to the values of the word_hash" do
       Omelettes::Words.add("fate")
       Omelettes::Words.word_hash.values.flatten.should include("fate")
@@ -35,8 +39,11 @@ describe Omelettes::Words do
   end
 
   describe "replace" do
-    it "returns a word of the same length" do
+    before(:each) do
       Omelettes::Words.clear
+    end
+
+    it "returns a word of the same length" do
       Omelettes::Words.add("bra")
       Omelettes::Words.add("brak")
       Omelettes::Words.add("brake")
@@ -45,7 +52,6 @@ describe Omelettes::Words do
     end
 
     it "returns a word starting with the same letter" do
-      Omelettes::Words.clear
       Omelettes::Words.add("abc")
       Omelettes::Words.add("bcd")
       Omelettes::Words.add("cde")
@@ -54,7 +60,6 @@ describe Omelettes::Words do
     end
 
     it "returns itself if there is no word in the dictionary matching the first letter and length" do
-      Omelettes::Words.clear
       Omelettes::Words.add("bra")
       Omelettes::Words.add("cake")
       Omelettes::Words.add("brake")

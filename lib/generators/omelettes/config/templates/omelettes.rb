@@ -14,7 +14,7 @@ Omelettes.setup do |config|
   #   config.ignore_tables = ["schema_migrations", "my_reporting_table", /(a-z_)user/]
   #   config.ignore_columns = [/(a-z_)*type/i, "name", "city"]
 
-  config.ignore_columns = [/(a-z_)*type/i, /(a-z_)*password(a-z_)*/i]
+  config.ignore_columns = [/[a-z_]*type/i, /[a-z_]*password[a-z_]*/i]
   config.ignore_tables  = ['schema_migrations']
 
   # Override non-standard table names => classes like this

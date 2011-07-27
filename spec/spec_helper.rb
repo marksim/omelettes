@@ -14,6 +14,10 @@ class TablelessModel < ActiveRecord::Base
 end
 
 class User < TablelessModel
-  column :first_name, :last_name, :city
+  column :id, :integer
+  column :first_name, :string
+  column :last_name, :string
+  column :city, :string
+  column :age, :integer
 end
 

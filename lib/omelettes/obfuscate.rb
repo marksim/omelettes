@@ -1,20 +1,25 @@
 module Omelettes
   class Obfuscate
     class << self
-      def cook
+      def cook(silent=false)
+        total_tables = 0
+        total_attributes = 0
         Words.load(word_list || "/usr/share/dict/words")
         tables.each do |table|
           next if ignore_table?(table)
-          print "\nProcessing #{model(table).name}"
+          print "\nProcessing #{model(table).name}" unless silent
           model(table).find_each do |object|
             model(table).columns.each do |column|
               next if ignore_column?(column.name) || column.type != :string
               object.obfuscate(column.name)
+              total_attributes += 1
             end
-            print "."
+            print "." unless silent
           end
+          total_tables += 1
         end
-        print "\n"
+        print "\n" unless silent
+        [total_tables, total_attributes]
       end
 
       def tables
@@ -22,21 +27,21 @@ module Omelettes
       end
 
       def model(table)
-        models ||= {}
-        models[table] ||= table.camelcase.singularize.constantize
-        models[table]
+        self.models ||= {}
+        self.models[table] ||= table.camelcase.singularize.constantize
+        self.models[table]
       end
 
       def ignore_table?(table)
         ignore_tables.each do |ignore|
-          return true if table.match(ignore)
+          return true if table.match(ignore).to_s == table
         end
         false
       end
 
       def ignore_column?(column)
         ignore_columns.each do |ignore|
-          return true if column.match(ignore)
+          return true if column.match(ignore).to_s == column
         end
         false
       end

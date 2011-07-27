@@ -106,7 +106,7 @@ describe Omelettes::Obfuscate do
 
     it "ignores specified columns" do
       Omelettes::Obfuscate.ignore_tables = []
-      Omelettes::Obfuscate.ignore_columns = ['first_name', 'last_name', 'city']
+      Omelettes::Obfuscate.ignore_columns = ['first_name', 'middle_name', 'last_name', 'city']
       Omelettes::Obfuscate.cook(true).should == [1, 0]
     end
   end

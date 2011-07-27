@@ -16,6 +16,7 @@ end
 class User < TablelessModel
   column :id, :integer
   column :first_name, :string
+  column :middle_name, :string
   column :last_name, :string
   column :city, :string
   column :age, :integer

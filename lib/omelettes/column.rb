@@ -18,7 +18,7 @@ module Omelettes
     end
 
     def self.default(name, value)
-      name = name.downcase.to_sym
+      name = name.to_s.downcase.to_sym
       case name
       when :hardened
         return value

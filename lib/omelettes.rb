@@ -4,6 +4,8 @@ rescue LoadError
   require 'activerecord' unless defined?(ActiveRecord)
 end
 
+require 'progressbar'
+
 require 'omelettes/column'
 require 'omelettes/model_additions'
 require 'omelettes/obfuscate'

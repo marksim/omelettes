@@ -1,29 +1,33 @@
 PATH
   remote: .
   specs:
-    omelettes (0.1.0)
+    omelettes (0.2.0)
       activerecord (~> 3.0)
       faker (~> 0.9.5)
+      progressbar
 
 GEM
   remote: http://rubygems.org/
   specs:
-    activemodel (3.0.5)
-      activesupport (= 3.0.5)
-      builder (~> 2.1.2)
-      i18n (~> 0.4)
-    activerecord (3.0.5)
-      activemodel (= 3.0.5)
-      activesupport (= 3.0.5)
-      arel (~> 2.0.2)
-      tzinfo (~> 0.3.23)
-    activesupport (3.0.5)
-    arel (2.0.10)
-    builder (2.1.2)
+    activemodel (3.2.1)
+      activesupport (= 3.2.1)
+      builder (~> 3.0.0)
+    activerecord (3.2.1)
+      activemodel (= 3.2.1)
+      activesupport (= 3.2.1)
+      arel (~> 3.0.0)
+      tzinfo (~> 0.3.29)
+    activesupport (3.2.1)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
+    arel (3.0.0)
+    builder (3.0.0)
     diff-lcs (1.1.2)
     faker (0.9.5)
       i18n (~> 0.4)
     i18n (0.6.0)
+    multi_json (1.0.4)
+    progressbar (0.10.0)
     rspec (2.1.0)
       rspec-core (~> 2.1.0)
       rspec-expectations (~> 2.1.0)
@@ -32,7 +36,7 @@ GEM
     rspec-expectations (2.1.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.1.0)
-    tzinfo (0.3.29)
+    tzinfo (0.3.31)
 
 PLATFORMS
   ruby

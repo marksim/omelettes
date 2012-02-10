@@ -23,15 +23,19 @@ module Omelettes
       alias :harden :ignore
     end
 
-    def obfuscate(column_name)
-      column = self.class.column_config(column_name)
-      original_value = self.send(column_name)
-      if column
-        value = column.process(original_value)
-      else
-        value = Column.default(column_name, original_value)
+    def obfuscate(column_names)
+      attributes = {}
+      column_names.each do |column_name|
+        column = self.class.column_config(column_name)
+        original_value = self.send(column_name)
+        if column
+          value = column.process(original_value)
+        else
+          value = Column.default(column_name, original_value)
+        end
+        attributes[column_name] = value
       end
-      self.update_attribute(column_name, value) if original_value != value
+      self.class.where(:id => self.id).update_all(attributes)
     end
 
     def self.included(base)

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "omelettes"
-  s.version     = "0.2.0"
+  s.version     = "0.5.0"
   s.author      = "Mark Sim"
   s.email       = "mark@quarternotecoda.com"
   s.homepage    = "http://github.com/marksim/omelettes"
@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', '~> 2.1.0'
   s.add_dependency 'faker', "~> 0.9.5"
   s.add_dependency 'activerecord', '~> 3.0'
+  s.add_dependency 'progressbar'
 
   s.rubyforge_project = s.name
   s.required_rubygems_version = ">= 1.3.4"

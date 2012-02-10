@@ -7,16 +7,16 @@ module Omelettes
       end
 
       def add(word)
-        key = "#{word[0].downcase}#{word.length}"
+        key = "#{word[0,1].downcase}#{word.length}"
         @word_hash[key] ||= []
         @word_hash[key] << word
       end
 
       def replace(word)
-        key = "#{word[0].downcase}#{word.length}"
+        key = "#{word[0,1].downcase}#{word.length}"
         valid_words = (@word_hash[key] || [])
         new_word = valid_words[rand(valid_words.size)]
-        return new_word.send(word[0].upcase == word[0] ? :capitalize : :downcase) unless new_word.nil?
+        return new_word.send(word[0,1].upcase == word[0,1] ? :capitalize : :downcase) unless new_word.nil?
         word
       end
 

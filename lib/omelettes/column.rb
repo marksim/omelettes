@@ -22,7 +22,7 @@ module Omelettes
       case name
       when :hardened
         return value
-      when :name, :first_name, :last_name
+      when :first_name, :last_name
         return Faker::Name.send(name)
       when :city, :state, :country, :street_address, :street_name, :zip_code
         return Faker::Address.send(name)
@@ -32,8 +32,10 @@ module Omelettes
         return Faker::Internet.send(name)
       when :paragraph, :paragraphs, :sentence, :sentences, :words
         return Faker::Lorem.send(name)
-      when :phone
+      when :phone, :contact_phone, :fax
         return Faker::PhoneNumber.phone_number
+      when :url, :website
+        return Faker::Internet.domain_name
       else
         return Omelettes::Obfuscate.obfuscate(value)
       end

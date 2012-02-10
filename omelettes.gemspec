@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "omelettes"
-  s.version     = "0.5.0"
+  s.version     = "0.5.1"
   s.author      = "Mark Sim"
   s.email       = "mark@quarternotecoda.com"
   s.homepage    = "http://github.com/marksim/omelettes"

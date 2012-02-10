@@ -73,7 +73,7 @@ module Omelettes
         @columns_for_table[table] ||= model(table).columns.select {|column| !ignore_column?(column.name) && (column.type == :string || column.type == :text)}.map(&:name)
       end
 
-      def post_cook(&callback)
+      def cleanup(&callback)
         @callback = callback
       end
 

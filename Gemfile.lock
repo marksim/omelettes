@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    omelettes (0.5.0)
+    omelettes (0.5.1)
       activerecord (~> 3.0)
       faker (~> 0.9.5)
       progressbar

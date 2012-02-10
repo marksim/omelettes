@@ -86,6 +86,14 @@ describe Omelettes::Obfuscate do
       end
       Omelettes::Obfuscate.obfuscate("the: quick, brown! fox :)").should == "tad: queen, barfs! foo :)"
     end
+
+    it "preserves digits" do
+      Omelettes::Words.clear
+      ["barfs", "foo", "queen", "tad"].each do |word|
+        Omelettes::Words.add(word)
+      end
+      Omelettes::Obfuscate.obfuscate("the: 1quick, 1504brown! fox :)").should == "tad: 1queen, 1504barfs! foo :)"
+    end
   end
 
   describe "cook" do

@@ -11,10 +11,13 @@ module Omelettes
           processed << table
           pbar = ProgressBar.new(model(table).name, model(table).count) unless silent
           model(table).find_each do |object|
+            tries = 0
             begin
               object.obfuscate(columns_for_table(table))
               total_attributes += 1
             rescue => e
+              tries += 1
+              retry if tries <= 1
               puts e.message
               next
             ensure
@@ -79,7 +82,7 @@ module Omelettes
 
       def obfuscate(string)
         return nil if string.nil?
-        string.split(/(\s+)|([[:punct:]])/).map do |word|
+        string.split(/(\s+)|([[:punct:]])|(\d+)/).map do |word|
           word.match(/[a-zA-Z]+/).nil? ? word : Words.replace(word)
         end.join("")
       end

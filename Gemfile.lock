@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    omelettes (0.2.0)
+    omelettes (0.5.0)
       activerecord (~> 3.0)
       faker (~> 0.9.5)
       progressbar
@@ -28,6 +28,7 @@ GEM
     i18n (0.6.0)
     multi_json (1.0.4)
     progressbar (0.10.0)
+    rake (0.9.2.2)
     rspec (2.1.0)
       rspec-core (~> 2.1.0)
       rspec-expectations (~> 2.1.0)
@@ -43,4 +44,5 @@ PLATFORMS
 
 DEPENDENCIES
   omelettes!
+  rake
   rspec (~> 2.1.0)

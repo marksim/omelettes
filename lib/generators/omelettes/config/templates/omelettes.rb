@@ -4,7 +4,7 @@
 # You can make columns with other names Faker-ified by overriding the model
 #   specific columns a la:  User.scramble(:nickname).as(:first_name)
 #   
-#     :name, :first_name, :last_name
+#     :first_name, :last_name
 #     :city, :state, :country, :street_address, :street_name, :zip_code
 #     :company_name, :company, :email, :user_name, :phone
 #     :paragraph, :paragraphs, :sentence, :sentences, :words
@@ -27,4 +27,9 @@ Omelettes.setup do |config|
   #   User.harden(:password)
   # To make a normally "Faker" obfuscated column behave normally, override with :omelette
   #   User.scramble(:name).as(:omelette)
+
+  # Cleanup as needed
+  #  config.cleanup do
+  #    # Delete Something en masse
+  #  end
 end

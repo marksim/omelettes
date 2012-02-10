@@ -31,11 +31,15 @@
 
       # To override the model associated with a specific table, make sure and specify it here:
       config.models['logins'] = User
+
+      # Cleanup data in post
+      config.cleanup do 
+        Notifications.delete_all
+      end
     end
 
 By default, the following columns will be Faker-ified (replaced with faker info RATHER than obfuscated using omelettes same-length-and-initial-character)
 
-* name
 * first_name
 * last_name
 * city 
@@ -49,6 +53,9 @@ By default, the following columns will be Faker-ified (replaced with faker info 
 * email
 * user_name
 * phone
+* contact_phone
+* url
+* website
 
 And the following can be used to 'treat' a column 'as':
 * paragraph 
